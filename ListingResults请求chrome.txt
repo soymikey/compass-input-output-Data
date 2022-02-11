@@ -1,0 +1,42 @@
+{
+    "query": "query ListingResults($uiSource: UiSourceName!, $uiQueryMap: UiQueryMapInput!, $generalQuery: GeneralQueryInput, $listingDetailQuery: [ListingDetailQueryInput], $experiments: [String], $debugMode: Boolean! = false, $isRentals: Boolean! = false) {\n  searchByUiQuery(uiSource: $uiSource, uiQueryMap: $uiQueryMap, listingDetailQuery: $listingDetailQuery, generalQuery: $generalQuery, experiments: $experiments) {\n    listingResults {\n      totalNumResults\n      listings {\n        status\n        badges {\n          cornerBadges {\n            badgeIndicator\n            badgeType\n            displayText\n          }\n        }\n        listingIdSHA\n        listingType\n        externalId\n        localizedStatus\n        isOffMLS\n        isConsumerSearchable\n        sourceFilters\n        location {\n          agentAddress\n          prettyAddress\n          city\n          state\n          zipCode\n          neighborhood\n          latitude\n          longitude\n          timezone\n          geoId\n          countyFipsCode\n          schoolDistricts {\n            id\n            name\n          }\n        }\n        parcelNumber\n        price {\n          charges {\n            chargeType\n            chargeAmount\n          }\n          closedPriceVerification\n          closedPriceVerificationSourceUrl\n          listed\n          lastKnown\n          perSquareFoot\n          monthlySalesCharges\n          monthlySalesChargesInclTaxes\n          closed\n          preClose\n          minimumDownPaymentPercentage\n          negotiability\n          formatted\n        }\n        size {\n          bedrooms\n          totalRooms\n          totalBathrooms\n          bathrooms\n          fullBathrooms\n          halfBathrooms\n          squareFeet\n          lotSizeInSquareFeet\n          builtSizeDimensions\n          lotSizeDimensions\n        }\n        dealInfo {\n          transactionType\n          cobrokerFeePercent\n        }\n        detailedInfo {\n          propertyType {\n            masterType\n          }\n          listingDetails {\n            subCategories {\n              name\n              fields {\n                key\n                values\n              }\n            }\n          }\n          outdoorSpace\n          amenities\n          apartmentLayout\n          buildingServiceLevel\n          petPolicy\n          totalParkingSpaces\n          assessorDetails {\n            ownerInfo {\n              ownerOccupied\n              owners {\n                firstName\n                lastName\n                type\n                title\n              }\n              yearsOwned\n              searchDisplayOwners\n            }\n            categories {\n              name\n              subCategories {\n                name\n                fields {\n                  key\n                  value\n                }\n              }\n            }\n          }\n        }\n        publicInfo {\n          mortgageInfo {\n            interestRateType\n            lenderName\n            shortDetails {\n              key\n              value\n            }\n          }\n        }\n        rentalInfo {\n          managementCompany\n          incentives\n        }\n        date {\n          daysOnMarket\n          cumulativeDaysOnMarket\n          updated\n          listed\n          closed\n          contract\n          available\n        }\n        openHouses {\n          openHouseType\n          startTimeMillis\n          endTimeMillis\n        }\n        buildingInfo {\n          buildingAddress\n          buildingName\n          buildingYearOpened\n          buildingUnits\n          pageLink\n        }\n        databaseSource {\n          sourceDisplayName\n          externalSourceName\n        }\n        navigationPageLink\n        pageLink\n        pageLinkSlug\n        media {\n          thumbnailUrl\n        }\n        isOffMLS\n      }\n      facets {\n        fieldName\n        counts {\n          count\n          value\n        }\n      }\n      statusCounts @skip(if: $isRentals) {\n        saleStatusToCountMap\n        statusGroups {\n          group\n          resultsCount\n        }\n      }\n      rentalStatusCounts @include(if: $isRentals) {\n        rentalStatusToCountMap\n        rentalStatusGroups {\n          group\n          resultsCount\n        }\n      }\n    }\n    searchQueryDebug @include(if: $debugMode)\n    listingResultsDebug @include(if: $debugMode)\n    validationErrors\n  }\n}\n",
+    "variables": {
+        "uiSource": "miami_gflr_rets",
+        "uiQueryMap": {
+            "miami_gflr_rets": {
+                "statuses": [
+                    "Active"
+                ]
+            }
+        },
+        "isRentals": false,
+        "generalQuery": {
+            "facetFieldNames": [
+                "isOffMls",
+                "status"
+            ],
+            "listingTypes": [
+                2
+            ],
+            "sortOrder": 113,
+            "start": 0,
+            "num": 24,
+            "workflow": "SALES",
+            "listingFeeds": [
+                "miami_gflr_rets",
+                "miami_re_v2_rets",
+                "miami_rapb"
+            ],
+            "listingDetailFieldsRequired": [
+                "listingFreeTextDetails_Dock"
+            ],
+            "geographies": []
+        },
+        "listingDetailQuery": [],
+        "experiments": [
+            "recolorado_data_merge",
+            "sf_data_merge"
+        ],
+        "debugMode": false
+    }
+}

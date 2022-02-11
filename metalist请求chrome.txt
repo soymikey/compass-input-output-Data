@@ -1,0 +1,7 @@
+{
+    "query": "query MetalistMappingResults($uiSource: UiSourceName!, $dataSource: MetalistMappingDataSource) {\n  metalistMapping(uiSource: $uiSource, dataSource: $dataSource) {\n    options\n    uuidMapping\n  }\n}\n",
+    "variables": {
+        "uiSource": "miami_gflr_rets",
+        "dataSource": "FALLBACK"
+    }
+}
